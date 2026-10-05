@@ -17,8 +17,8 @@ export interface DatoClave {
   readonly valor: string;
 }
 
-/** Proporciones admitidas para los marcos de imagen. */
-export type MediaRatio = '16/9' | '3/2' | '4/3' | '4/5';
+/** Proporciones admitidas para los marcos de imagen y de video. */
+export type MediaRatio = '16/9' | '9/16' | '1/1' | '3/2' | '4/3' | '4/5';
 
 /** Fotografía con su texto alternativo y su pie de foto. */
 export interface ImagenBitacora {
@@ -37,6 +37,8 @@ export interface VideoBitacora {
   readonly titulo: string;
   readonly descripcion: string;
   readonly poster?: string;
+  /** Proporción del marco. Por defecto `16/9`; `9/16` para videos verticales. */
+  readonly ratio?: MediaRatio;
 }
 
 /** Bloque de texto breve con título (lugar, organización, materiales…). */
@@ -80,7 +82,6 @@ export interface ContenidoIntervencion {
   readonly eyebrow: string;
   readonly titulo: string;
   readonly intro: string;
-  readonly imagen: ImagenBitacora;
   readonly video: VideoBitacora;
 }
 

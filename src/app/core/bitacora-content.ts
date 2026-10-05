@@ -15,13 +15,13 @@ import type {
  *
  * Evidencia real disponible: una fotografía y dos videos.
  *
- *   src/assets/images/portada.jpg   → única fotografía
+ *   src/assets/images/portada.jpg   → única fotografía (solo en la portada)
  *   src/assets/videos/intervencion.mp4
  *   src/assets/videos/aprendizaje.mp4
  *
  * Lo que aparece entre corchetes `[ ]` son datos que solo tú conoces y que
- * no se pueden escribir sin inventarlos: fecha, nombre del escenario,
- * descripciones concretas y firma. No hay marcadores de posición para
+ * no se pueden escribir sin inventarlos: textos alternativos y pies de las
+ * imágenes, y los datos de la entrega. No hay marcadores de posición para
  * fotografías ni videos: si un archivo falta, se avisa con su nombre.
  *
  * Privacidad: sin nombres completos, direcciones, teléfonos ni ningún dato
@@ -48,17 +48,17 @@ export const HERO: ContenidoHero = {
   descripcion:
     'La experiencia consistió en acompañar y escuchar a una persona que se encontraba en una situación de soledad, con el propósito de abrir un espacio de conversación, compañía y reconocimiento de su dignidad.',
   responsable:
-    'Realizada de forma individual por [Nombre del estudiante], responsable de toda la experiencia.',
+    'Realizada de forma individual por Juan Sebastián Ríos Rodríguez, responsable de toda la experiencia.',
   datos: [
-    { label: 'Fecha', valor: '[Fecha de la experiencia]' },
-    { label: 'Escenario', valor: 'calle 68 del sector Castilla' },
+    { label: 'Fecha', valor: 'Domingo 4 de octubre de 2026' },
+    { label: 'Escenario', valor: 'Calle 68, sector Castilla, Medellín' },
     { label: 'Modalidad', valor: 'Acompañamiento y escucha individual' },
   ],
   imagen: {
     src: 'assets/images/portada.jpg',
     alt: 'Fotografía de la experiencia de acompañamiento y escucha: [Descripción de lo que se ve en la fotografía].',
     caption: '[Pie de foto breve de la fotografía principal]',
-    ratio: '3/2',
+    ratio: '1/1',
   },
 };
 
@@ -71,11 +71,12 @@ export const ESCENARIO: ContenidoEscenario = {
   eyebrow: '01 · Dónde y cómo',
   titulo: 'El escenario y la preparación',
   intro:
-    'La experiencia se dio de manera espontánea en la calle 68 del sector Castilla. A continuación se describe el lugar, la organización y los materiales.',
+    'La experiencia se dio de manera espontánea en la calle 68 del sector Castilla, en Medellín. A continuación se describe el lugar, la organización y los materiales.',
   bloques: [
     {
       titulo: 'El lugar',
-      texto: '[Descripción breve del lugar y del contexto en el que se dio el encuentro.]',
+      texto:
+        'La experiencia se realizó en la calle 68 del sector Castilla, un espacio de carácter comercial y de tránsito frecuente de personas. En este lugar es común encontrar personas que recorren la zona ofreciendo dulces y otros productos como una forma de obtener ingresos para su sustento diario.',
     },
     {
       titulo: 'La organización',
@@ -99,13 +100,7 @@ export const INTERVENCION: ContenidoIntervencion = {
   eyebrow: '02 · El encuentro',
   titulo: 'La intervención',
   intro:
-    'El acompañamiento se dio desde la presencia y la escucha. [Descripción breve de lo que se hizo durante el encuentro.] Las evidencias de esta experiencia son la fotografía y el video.',
-  imagen: {
-    src: 'assets/images/portada.jpg',
-    alt: 'Fotografía de la persona acompañada durante el encuentro: [Descripción de lo que se ve en la fotografía].',
-    caption: '[Pie de foto breve]',
-    ratio: '4/5',
-  },
+    'El acompañamiento se dio desde la presencia y la escucha. Invité a comer a una de las personas que ofrecen dulces en el sector, con el reconocimiento de que, para algunas de quienes desarrollan esta actividad en la calle, las condiciones económicas pueden dificultar incluso el acceso cotidiano a una alimentación adecuada. El siguiente video es la evidencia de esta experiencia.',
   video: {
     src: 'assets/videos/intervencion.mp4',
     titulo: 'La experiencia en video',
@@ -152,11 +147,13 @@ export const APRENDIZAJE: ContenidoAprendizaje = {
   eyebrow: '04 · Cierre',
   titulo: 'Bitácora de aprendizaje',
   intro:
-    'Video grabado desde el escenario de práctica en el que respondo las tres preguntas de la bitácora.',
+    'Video en el que respondo, en mi propia voz, las tres preguntas de la bitácora de aprendizaje.',
   video: {
     src: 'assets/videos/aprendizaje.mp4',
     titulo: 'Reflexión final',
-    descripcion: 'La reflexión sobre lo hecho, lo aprendido y lo que cambiaría.',
+    descripcion:
+      'Respuesta a las tres preguntas: lo que hice, lo que aprendí sobre el Humanismo Amigoniano y lo que cambiaría si repitiera la experiencia.',
+    ratio: '9/16',
   },
   preguntas: [
     '¿Qué hice?',
@@ -173,7 +170,7 @@ export const FOOTER: ContenidoFooter = {
   titulo: 'Un espacio para compartir',
   nota: 'Las imágenes y los videos se utilizan con autorización para fines académicos. No se incluye información personal identificatoria de la persona acompañada.',
   firma: [
-    { label: 'Responsable', valor: '[Nombre del estudiante]' },
+    { label: 'Responsable', valor: 'Juan Sebastián Ríos Rodríguez' },
     { label: 'Asignatura', valor: '[Asignatura / institución]' },
     { label: 'Entrega', valor: '[Fecha de entrega]' },
   ],

@@ -29,7 +29,7 @@ import { VideoBlockComponent } from '../shared/video-block';
         />
 
         <div class="mt-12 grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-start lg:gap-14">
-          <div appReveal>
+          <div appReveal class="mx-auto w-full max-w-[19rem] lg:mx-0 lg:max-w-[22rem]">
             <app-video-block [video]="contenido().video" tono="inverso" />
           </div>
 

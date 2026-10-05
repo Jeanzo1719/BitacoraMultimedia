@@ -4,6 +4,8 @@ import type { ImagenBitacora, MediaRatio } from '../core/modelos';
 /** Clases de proporción escritas completas para que Tailwind las detecte. */
 const RATIOS: Record<MediaRatio, string> = {
   '16/9': 'aspect-[16/9]',
+  '9/16': 'aspect-[9/16]',
+  '1/1': 'aspect-square',
   '3/2': 'aspect-[3/2]',
   '4/3': 'aspect-[4/3]',
   '4/5': 'aspect-[4/5]',

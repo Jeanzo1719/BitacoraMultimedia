@@ -35,9 +35,10 @@ describe('App', () => {
   it('debe usar solo la evidencia multimedia disponible', async () => {
     const compilado = await render();
 
-    // una unica fotografia (reutilizada) y dos videos
+    // una unica fotografia, en la portada, y dos videos
     const fotos = new Set([...compilado.querySelectorAll('img')].map((i) => i.getAttribute('src')));
     expect(fotos.size).toBe(1);
+    expect(compilado.querySelectorAll('#inicio img').length).toBe(1);
     expect(compilado.querySelectorAll('video').length).toBe(2);
   });
 
