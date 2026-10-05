@@ -3,35 +3,35 @@
 Página de una sola vista (SPA) construida con **Angular 22** que presenta, en forma de
 bitácora cronológica, una experiencia de **Humanización / Humanismo Amigoniano**:
 acompañamiento y escucha a una persona que se encontraba en una situación de soledad.
+La intervención fue **individual**.
 
-No es un informe académico: es un **diario visual** recorrido por secciones, fotografías
-grandes, videos cortos y textos breves.
+No es un informe académico: es un **diario visual** donde la fotografía y los videos
+tienen el protagonismo y el texto solo los contextualiza.
 
 ## Estructura de la página
 
-| Sección                 | Componente                         | Ancla           |
-| ----------------------- | ---------------------------------- | --------------- |
-| Portada                 | `sections/hero-section.ts`         | `#inicio`       |
-| El escenario            | `sections/scenario-section.ts`     | `#escenario`    |
-| Preparación e inicio    | `sections/preparation-section.ts`  | `#preparacion`  |
-| Durante la intervención | `sections/intervention-section.ts` | `#intervencion` |
-| Producto elaborado      | `sections/product-section.ts`      | `#producto`     |
-| Resultados observables  | `sections/results-section.ts`      | `#resultados`   |
-| Bitácora de aprendizaje | `sections/learning-log-section.ts` | `#aprendizaje`  |
+| Sección                        | Componente                         | Ancla           |
+| ------------------------------ | ---------------------------------- | --------------- |
+| Inicio (portada)               | `sections/hero-section.ts`         | `#inicio`       |
+| El escenario y la preparación  | `sections/scenario-section.ts`     | `#escenario`    |
+| La intervención                | `sections/intervention-section.ts` | `#intervencion` |
+| El resultado de la experiencia | `sections/result-section.ts`       | `#resultado`    |
+| Bitácora de aprendizaje        | `sections/learning-log-section.ts` | `#aprendizaje`  |
+| Cierre                         | `shared/site-footer.ts`            | —               |
 
 Componentes reutilizables en `src/app/shared/`:
 
 - `site-nav.ts` — navegación fija: enlaces en línea en escritorio y menú desplegable en móvil.
 - `section-heading.ts` — antetítulo + título + entrada, en tono claro o inverso.
-- `media-figure.ts` — fotografía con marco de proporción fija, pie de foto y distintivo
-  automático de marcador de posición.
-- `video-block.ts` — video con póster y controles; muestra un aviso si el `.mp4` no existe.
-- `site-footer.ts` — nota de privacidad y firma.
+- `media-figure.ts` — fotografía con marco de proporción fija y pie de foto. Si el archivo
+  no está, el marco muestra solo el nombre del archivo que falta.
+- `video-block.ts` — `<video controls>` con pie de foto; el póster es opcional.
+- `site-footer.ts` — nota de privacidad y datos del estudiante.
 - `reveal.directive.ts` — aparición progresiva al entrar en pantalla (se desactiva con
   `prefers-reduced-motion`).
 
-Contenido y datos: `src/app/core/bitacora-content.ts` (único archivo que hay que editar para
-cambiar textos o medios) y `src/app/core/modelos.ts` (tipos).
+Contenido y tipos: `src/app/core/bitacora-content.ts` (único archivo que se edita para
+cambiar textos o medios) y `src/app/core/modelos.ts`.
 
 ## Comandos
 
@@ -44,47 +44,40 @@ pnpm test        # pruebas unitarias (Vitest)
 
 ## Multimedia
 
+La bitácora usa únicamente la evidencia disponible: **una fotografía y dos videos**.
+
 ```text
 src/assets/
 ├── images/
-│   ├── portada/portada-01.svg
-│   ├── escenario/escenario-01.svg
-│   ├── preparacion/preparacion-01.svg, preparacion-02.svg
-│   ├── materiales/materiales-01.svg
-│   ├── intervencion/intervencion-01.svg … intervencion-06.svg
-│   ├── producto/producto-01.svg
-│   └── videos/poster-introduccion.svg, poster-intervencion.svg,
-│                poster-intervencion-detalle.svg, poster-aprendizaje.svg
+│   └── portada.jpg            ← única fotografía
 └── videos/
-    ├── introduccion.mp4        (pendiente)
-    ├── intervencion.mp4        (pendiente)
-    ├── intervencion-detalle.mp4 (pendiente)
-    └── aprendizaje.mp4         (pendiente)
+    ├── intervencion.mp4       ← video de la experiencia
+    └── aprendizaje.mp4        ← video de la reflexión final
 ```
 
 `src/assets` se publica en la carpeta `/assets` (configurado en `angular.json`).
 
-### Cómo sustituir los marcadores de posición
+1. Coloca la fotografía en `src/assets/images/` con el nombre `portada.jpg`.
+2. Coloca los videos en `src/assets/videos/` con los nombres `intervencion.mp4` y
+   `aprendizaje.mp4`.
+3. Si una fotografía no aparece, revisa la ruta en `bitacora-content.ts`: el marco
+   muestra el nombre del archivo esperado.
+4. No hay marcadores de posición ni espacios reservados a fotos o videos que no
+   existan. Si más adelante se añade un póster para un video, basta con escribir su
+   ruta en el campo `poster` de ese video.
 
-1. Deja la fotografía real junto al marcador, por ejemplo
-   `src/assets/images/intervencion/intervencion-01.jpg`.
-2. En `src/app/core/bitacora-content.ts`, cambia solo la ruta (`src`) y el texto
-   alternativo (`alt`) del elemento correspondiente.
-3. Para los videos, guarda el `.mp4` en `src/assets/videos/` con el nombre exacto
-   (`introduccion.mp4`, `intervencion.mp4`, `intervencion-detalle.mp4`,
-   `aprendizaje.mp4`) y añade su póster real en `src/assets/images/videos/`.
-4. El distintivo «Marcador de posición» desaparece solo cuando la ruta deja de
-   terminar en `.svg`.
+### Producto tangible (opcional)
 
-Los `.svg` actuales son únicamente marcadores: **no contienen ninguna fotografía real**.
+En `RESULTADO`, la propiedad `producto` está en `null`. Si durante la experiencia se
+elaboró algo tangible, descríbelo ahí y la página lo mostrará junto a las
+observaciones. Mientras sea `null`, no se reserva ningún espacio para un producto
+que no existe.
 
 ### Textos pendientes
 
-Todo lo que aparece entre corchetes `[ ]` en `bitacora-content.ts` está pendiente de
-escribir con información verdadera de la experiencia: fecha, nombre del escenario,
-descripciones, resultados observables y el resumen de la bitácora de aprendizaje.
-En `RESULTADOS`, cada bloque se muestra como «Por completar» hasta que se escribe la
-observación y se cambia `registrado: false` por `registrado: true`.
+Lo que aparece entre corchetes `[ ]` son datos que solo conoce el autor y que no se
+pueden escribir sin inventarlos: fecha, nombre del escenario, descripciones
+concretas y firma. Son los únicos marcadores de la página.
 
 ## Privacidad
 

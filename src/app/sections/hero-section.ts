@@ -3,7 +3,7 @@ import type { ContenidoHero } from '../core/modelos';
 import { MediaFigureComponent } from '../shared/media-figure';
 import { RevealDirective } from '../shared/reveal.directive';
 
-/** Portada: título, propósito del registro y fotografía principal. */
+/** Portada: título, propósito del registro y la fotografía principal. */
 @Component({
   selector: 'app-hero-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,16 +60,6 @@ import { RevealDirective } from '../shared/reveal.directive';
           <div appReveal [appRevealDelay]="120">
             <app-media-figure [imagen]="contenido().imagen" [perezosa]="false" />
           </div>
-        </div>
-
-        <div class="mt-14 flex items-center gap-3 text-ink-mute" appReveal>
-          <span class="h-px w-12 bg-line-strong" aria-hidden="true"></span>
-          <a
-            href="#escenario"
-            class="text-[0.6875rem] tracking-[0.2em] uppercase transition-colors hover:text-clay"
-          >
-            Desplazarse al escenario
-          </a>
         </div>
       </div>
     </section>

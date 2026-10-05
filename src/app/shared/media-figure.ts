@@ -7,14 +7,14 @@ const RATIOS: Record<MediaRatio, string> = {
   '3/2': 'aspect-[3/2]',
   '4/3': 'aspect-[4/3]',
   '4/5': 'aspect-[4/5]',
-  '1/1': 'aspect-square',
 };
 
 /**
- * Fotografía con marco de proporción fija, pie de foto y distintivo
- * automático de marcador de posición: toda imagen `.svg` se etiqueta como
- * «Marcador de posición», de modo que se vea con claridad qué archivo falta
- * por sustituir.
+ * Fotografía con marco de proporción fija y pie de foto.
+ *
+ * No inventa contenido: si el archivo no está en `src/assets`, el marco
+ * muestra únicamente el nombre del archivo que falta, para que sea evidente
+ * cuál hay que incorporar.
  */
 @Component({
   selector: 'app-media-figure',
@@ -25,14 +25,12 @@ const RATIOS: Record<MediaRatio, string> = {
         class="relative overflow-hidden rounded-[2px] border border-line bg-paper-deep"
         [class]="marco()"
       >
-        @if (fallo()) {
+        @if (archivoAusente()) {
           <div
-            role="img"
-            [attr.aria-label]="imagen().alt"
             class="flex h-full w-full flex-col items-center justify-center gap-2 p-6 text-center"
           >
             <svg
-              class="h-8 w-8 text-clay-soft"
+              class="h-6 w-6 text-clay-soft"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -44,8 +42,7 @@ const RATIOS: Record<MediaRatio, string> = {
               />
               <circle cx="12" cy="12.5" r="3.25" />
             </svg>
-            <p class="font-display text-base text-ink-soft">Archivo no encontrado</p>
-            <p class="text-xs break-all text-ink-mute">{{ imagen().src }}</p>
+            <p class="text-sm break-all text-ink-mute">{{ imagen().src }}</p>
           </div>
         } @else {
           <img
@@ -55,16 +52,8 @@ const RATIOS: Record<MediaRatio, string> = {
             [attr.loading]="perezosa() ? 'lazy' : 'eager'"
             [attr.fetchpriority]="perezosa() ? null : 'high'"
             class="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
-            (error)="fallo.set(true)"
+            (error)="archivoAusente.set(true)"
           />
-        }
-
-        @if (esMarcador()) {
-          <span
-            class="absolute top-3 left-3 rounded-[2px] bg-ink/80 px-2 py-1 text-[0.625rem] tracking-[0.14em] text-paper uppercase"
-          >
-            Marcador de posición
-          </span>
         }
       </div>
 
@@ -83,7 +72,6 @@ export class MediaFigureComponent {
   /** Las imágenes bajo el primer pliegue pueden cargarse de inmediato. */
   readonly perezosa = input(true);
 
-  protected readonly fallo = signal(false);
-  protected readonly esMarcador = computed(() => this.imagen().src.endsWith('.svg'));
+  protected readonly archivoAusente = signal(false);
   protected readonly marco = computed(() => RATIOS[this.imagen().ratio]);
 }

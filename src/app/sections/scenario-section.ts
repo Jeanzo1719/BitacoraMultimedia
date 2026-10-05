@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { ContenidoEscenario } from '../core/modelos';
-import { MediaFigureComponent } from '../shared/media-figure';
 import { RevealDirective } from '../shared/reveal.directive';
 import { SectionHeadingComponent } from '../shared/section-heading';
-import { VideoBlockComponent } from '../shared/video-block';
 
-/** El escenario: lugar, contexto breve, fotografía y video de introducción. */
+/**
+ * Escenario y preparación en un solo bloque breve: lugar, contexto,
+ * organización de la actividad y materiales utilizados.
+ */
 @Component({
   selector: 'app-scenario-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MediaFigureComponent, RevealDirective, SectionHeadingComponent, VideoBlockComponent],
+  imports: [RevealDirective, SectionHeadingComponent],
   template: `
     <section
       [id]="contenido().id"
@@ -24,29 +25,18 @@ import { VideoBlockComponent } from '../shared/video-block';
           idTitulo="titulo-escenario"
         />
 
-        <div class="mt-12 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <div appReveal>
-            <app-media-figure [imagen]="contenido().imagen" />
-
-            <dl class="mt-10 grid gap-6 sm:grid-cols-2">
-              @for (dato of contenido().datos; track dato.label) {
-                <div class="border-t border-line pt-4">
-                  <dt class="text-[0.6875rem] tracking-[0.18em] text-clay uppercase">
-                    {{ dato.label }}
-                  </dt>
-                  <dd class="mt-1.5 text-[0.9375rem] leading-relaxed text-ink">{{ dato.valor }}</dd>
-                </div>
-              }
-            </dl>
-          </div>
-
-          <div class="lg:pt-6" appReveal [appRevealDelay]="120">
-            <h3 class="font-display text-xl text-ink">Una breve introducción</h3>
-            <div class="mt-5">
-              <app-video-block [video]="contenido().video" />
+        <dl class="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-10">
+          @for (bloque of contenido().bloques; track bloque.titulo; let indice = $index) {
+            <div class="border-t border-line pt-5" appReveal [appRevealDelay]="indice * 70">
+              <dt class="font-mono text-xs tracking-[0.16em] text-clay uppercase">
+                {{ (indice + 1).toString().padStart(2, '0') }} · {{ bloque.titulo }}
+              </dt>
+              <dd class="mt-3 text-[0.9375rem] leading-relaxed text-ink-soft">
+                {{ bloque.texto }}
+              </dd>
             </div>
-          </div>
-        </div>
+          }
+        </dl>
       </div>
     </section>
   `,
