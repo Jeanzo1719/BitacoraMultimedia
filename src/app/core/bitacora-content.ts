@@ -51,7 +51,7 @@ export const HERO: ContenidoHero = {
     'Realizada de forma individual por [Nombre del estudiante], responsable de toda la experiencia.',
   datos: [
     { label: 'Fecha', valor: '[Fecha de la experiencia]' },
-    { label: 'Escenario', valor: '[Nombre del escenario]' },
+    { label: 'Escenario', valor: 'calle 68 del sector Castilla' },
     { label: 'Modalidad', valor: 'Acompañamiento y escucha individual' },
   ],
   imagen: {
@@ -71,7 +71,7 @@ export const ESCENARIO: ContenidoEscenario = {
   eyebrow: '01 · Dónde y cómo',
   titulo: 'El escenario y la preparación',
   intro:
-    'La experiencia se desarrolló en [Nombre del escenario]. Antes de llegar se definieron el propósito de la visita, el orden de la conversación y la duración prevista.',
+    'La experiencia se dio de manera espontánea en la calle 68 del sector Castilla. A continuación se describe el lugar, la organización y los materiales.',
   bloques: [
     {
       titulo: 'El lugar',
@@ -79,12 +79,13 @@ export const ESCENARIO: ContenidoEscenario = {
     },
     {
       titulo: 'La organización',
-      texto: '[Descripción de cómo se organizó la actividad y cuánto duró la visita.]',
+      texto:
+        'La actividad se realizó de manera espontánea en la calle 68 del sector Castilla. La organización consistió en recorrer el sector y esperar a que alguna de las personas que ofrecen dulces para obtener ingresos se acercara a realizar su actividad habitual. En ese momento aproveché la oportunidad para invitar a comer a una de estas personas y compartir un espacio de conversación y acompañamiento. La visita tuvo como propósito generar un encuentro sencillo y respetuoso, sin establecer una actividad rígida ni condicionar la interacción a la realización de la actividad académica.',
     },
     {
       titulo: 'Materiales',
       texto:
-        'Se llevó lo mínimo necesario para sostener la conversación sin invadirla: [Materiales realmente utilizados].',
+        'El único material utilizado fue un teléfono celular, empleado para registrar parte de la experiencia mediante video. La grabación se realizó desde una distancia prudente y sin registrar directamente la conversación, como una decisión consciente para preservar la privacidad, dignidad y tranquilidad de la persona acompañada. Por esta misma razón, se evitó realizar una grabación cercana o intrusiva del encuentro. La intención era documentar la experiencia sin convertir a la persona ni a su situación personal en material de exposición para una actividad académica.',
     },
   ],
 };
@@ -125,11 +126,13 @@ export const RESULTADO: ContenidoResultado = {
   bloques: [
     {
       titulo: 'Durante el encuentro',
-      texto: '[Descripción de lo que se observó durante la intervención.]',
+      texto:
+        'Durante la intervención se generó un espacio de conversación y acompañamiento mientras compartíamos una comida. La experiencia permitió prestar atención a la persona, escucharla y compartir un momento cotidiano sin centrar el encuentro únicamente en su situación económica o en su actividad de venta.',
     },
     {
       titulo: 'Al cerrar la visita',
-      texto: '[Descripción de lo que se observó al terminar.]',
+      texto:
+        'Al finalizar el encuentro, se dio cierre de manera natural y respetuosa. La experiencia permitió reconocer el valor de dedicar tiempo a otra persona y comprender que una acción sencilla, como compartir una comida y brindar un espacio de escucha, puede convertirse en una forma concreta de acompañamiento y reconocimiento de la dignidad humana.',
     },
   ],
   /**
