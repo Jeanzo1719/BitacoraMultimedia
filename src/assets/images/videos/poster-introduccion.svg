@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Marcador de posición para Póster · introducción">
+  <rect width="1280" height="720" fill="#efe7d9" />
+  <rect x="36" y="36" width="1208" height="648" fill="none" stroke="#cfc2ac" stroke-width="2" stroke-dasharray="10 12" />
+  <g transform="translate(640 273.6) scale(2.25)">
+    <rect x="-34" y="-24" width="68" height="48" rx="5" stroke="#9c4f31" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M-8 -9 L14 0 L-8 9 Z" fill="#9c4f31" stroke="none" />
+  </g>
+  <text x="640" y="410.4" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#4b443c">Póster · introducción</text>
+  <text x="640" y="453.6" text-anchor="middle" font-family="ui-monospace, 'Courier New', monospace" font-size="21" fill="#9c4f31">Archivo esperado: assets/videos/introduccion.mp4</text>
+  <text x="640" y="489.6" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#6f6659" font-style="italic">Sustituir por el póster real: images/videos/poster-introduccion.svg</text>
+</svg>

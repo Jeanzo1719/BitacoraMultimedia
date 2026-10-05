@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+/* El salto al contenido no debe dibujar un contorno al receive el foco
+   mediante el ancla de salto; sí lo mantiene el resto de elementos. */
+main:focus {
+  outline: none;
+}

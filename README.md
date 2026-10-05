@@ -1,59 +1,93 @@
-# BitacoraMultimedia
+# Un espacio para compartir — Bitácora multimedia
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+Página de una sola vista (SPA) construida con **Angular 22** que presenta, en forma de
+bitácora cronológica, una experiencia de **Humanización / Humanismo Amigoniano**:
+acompañamiento y escucha a una persona que se encontraba en una situación de soledad.
 
-## Development server
+No es un informe académico: es un **diario visual** recorrido por secciones, fotografías
+grandes, videos cortos y textos breves.
 
-To start a local development server, run:
+## Estructura de la página
 
-```bash
-ng serve
-```
+| Sección                 | Componente                         | Ancla           |
+| ----------------------- | ---------------------------------- | --------------- |
+| Portada                 | `sections/hero-section.ts`         | `#inicio`       |
+| El escenario            | `sections/scenario-section.ts`     | `#escenario`    |
+| Preparación e inicio    | `sections/preparation-section.ts`  | `#preparacion`  |
+| Durante la intervención | `sections/intervention-section.ts` | `#intervencion` |
+| Producto elaborado      | `sections/product-section.ts`      | `#producto`     |
+| Resultados observables  | `sections/results-section.ts`      | `#resultados`   |
+| Bitácora de aprendizaje | `sections/learning-log-section.ts` | `#aprendizaje`  |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Componentes reutilizables en `src/app/shared/`:
 
-## Code scaffolding
+- `site-nav.ts` — navegación fija: enlaces en línea en escritorio y menú desplegable en móvil.
+- `section-heading.ts` — antetítulo + título + entrada, en tono claro o inverso.
+- `media-figure.ts` — fotografía con marco de proporción fija, pie de foto y distintivo
+  automático de marcador de posición.
+- `video-block.ts` — video con póster y controles; muestra un aviso si el `.mp4` no existe.
+- `site-footer.ts` — nota de privacidad y firma.
+- `reveal.directive.ts` — aparición progresiva al entrar en pantalla (se desactiva con
+  `prefers-reduced-motion`).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Contenido y datos: `src/app/core/bitacora-content.ts` (único archivo que hay que editar para
+cambiar textos o medios) y `src/app/core/modelos.ts` (tipos).
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Comandos
 
 ```bash
-ng test
+pnpm install     # dependencias (pnpm 12)
+pnpm start       # servidor de desarrollo en http://localhost:4200
+pnpm build       # build de producción en dist/BitacoraMultimedia
+pnpm test        # pruebas unitarias (Vitest)
 ```
 
-## Running end-to-end tests
+## Multimedia
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```text
+src/assets/
+├── images/
+│   ├── portada/portada-01.svg
+│   ├── escenario/escenario-01.svg
+│   ├── preparacion/preparacion-01.svg, preparacion-02.svg
+│   ├── materiales/materiales-01.svg
+│   ├── intervencion/intervencion-01.svg … intervencion-06.svg
+│   ├── producto/producto-01.svg
+│   └── videos/poster-introduccion.svg, poster-intervencion.svg,
+│                poster-intervencion-detalle.svg, poster-aprendizaje.svg
+└── videos/
+    ├── introduccion.mp4        (pendiente)
+    ├── intervencion.mp4        (pendiente)
+    ├── intervencion-detalle.mp4 (pendiente)
+    └── aprendizaje.mp4         (pendiente)
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+`src/assets` se publica en la carpeta `/assets` (configurado en `angular.json`).
 
-## Additional Resources
+### Cómo sustituir los marcadores de posición
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Deja la fotografía real junto al marcador, por ejemplo
+   `src/assets/images/intervencion/intervencion-01.jpg`.
+2. En `src/app/core/bitacora-content.ts`, cambia solo la ruta (`src`) y el texto
+   alternativo (`alt`) del elemento correspondiente.
+3. Para los videos, guarda el `.mp4` en `src/assets/videos/` con el nombre exacto
+   (`introduccion.mp4`, `intervencion.mp4`, `intervencion-detalle.mp4`,
+   `aprendizaje.mp4`) y añade su póster real en `src/assets/images/videos/`.
+4. El distintivo «Marcador de posición» desaparece solo cuando la ruta deja de
+   terminar en `.svg`.
+
+Los `.svg` actuales son únicamente marcadores: **no contienen ninguna fotografía real**.
+
+### Textos pendientes
+
+Todo lo que aparece entre corchetes `[ ]` en `bitacora-content.ts` está pendiente de
+escribir con información verdadera de la experiencia: fecha, nombre del escenario,
+descripciones, resultados observables y el resumen de la bitácora de aprendizaje.
+En `RESULTADOS`, cada bloque se muestra como «Por completar» hasta que se escribe la
+observación y se cambia `registrado: false` por `registrado: true`.
+
+## Privacidad
+
+No se incorporan nombres completos, direcciones, teléfonos ni ningún dato identificatorio
+de la persona acompañada. Las fotografías y los videos deben usarse con autorización
+de la persona y, preferentemente, encuadres que no expongan información privada.
