@@ -114,7 +114,5 @@ export interface ContenidoAprendizaje {
 }
 
 export interface ContenidoFooter {
-  readonly titulo: string;
-  readonly nota: string;
   readonly firma: readonly DatoClave[];
 }

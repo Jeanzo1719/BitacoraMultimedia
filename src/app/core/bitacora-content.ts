@@ -71,17 +71,17 @@ export const ESCENARIO: ContenidoEscenario = {
   eyebrow: '01 · Dónde y cómo',
   titulo: 'El escenario y la preparación',
   intro:
-    'La experiencia se dio de manera espontánea en la calle 68 del sector Castilla, en Medellín. A continuación se describe el lugar, la organización y los materiales.',
+    'La experiencia fue planeada previamente y se eligió la calle 68 del sector Castilla, en Medellín, como escenario para realizar el acompañamiento. A continuación se describe el lugar, la organización y los materiales.',
   bloques: [
     {
       titulo: 'El lugar',
       texto:
-        'La experiencia se realizó en la calle 68 del sector Castilla, un espacio de carácter comercial y de tránsito frecuente de personas. En este lugar es común encontrar personas que recorren la zona ofreciendo dulces y otros productos como una forma de obtener ingresos para su sustento diario.',
+        'La calle 68 del sector Castilla se eligió previamente como escenario de la experiencia, por ser un espacio de carácter comercial y de tránsito frecuente de personas. En este lugar es común encontrar personas que recorren la zona ofreciendo dulces y otros productos como una forma de obtener ingresos para su sustento diario.',
     },
     {
       titulo: 'La organización',
       texto:
-        'La actividad se realizó de manera espontánea en la calle 68 del sector Castilla. La organización consistió en recorrer el sector y esperar a que alguna de las personas que ofrecen dulces para obtener ingresos se acercara a realizar su actividad habitual. En ese momento aproveché la oportunidad para invitar a comer a una de estas personas y compartir un espacio de conversación y acompañamiento. La visita tuvo como propósito generar un encuentro sencillo y respetuoso, sin establecer una actividad rígida ni condicionar la interacción a la realización de la actividad académica.',
+        'La actividad fue planeada previamente y se definió la calle 68 del sector Castilla como escenario de la experiencia, junto con el propósito de acompañar y escuchar. No estaba determinado quién sería la persona acompañada ni el momento exacto del encuentro. Una vez en el lugar, se esperó a que se presentara la oportunidad de acercamiento con una persona que ofreciera dulces para obtener ingresos. Cuando se presentó esa oportunidad, se realizó la invitación a comer y se generó el espacio de conversación y acompañamiento. El encuentro fue sencillo y respetuoso, sin establecer una actividad rígida ni condicionar la interacción a la realización de la actividad académica.',
     },
     {
       titulo: 'Materiales',
@@ -100,7 +100,7 @@ export const INTERVENCION: ContenidoIntervencion = {
   eyebrow: '02 · El encuentro',
   titulo: 'La intervención',
   intro:
-    'El acompañamiento se dio desde la presencia y la escucha. Invité a comer a una de las personas que ofrecen dulces en el sector, con el reconocimiento de que, para algunas de quienes desarrollan esta actividad en la calle, las condiciones económicas pueden dificultar incluso el acceso cotidiano a una alimentación adecuada. El siguiente video es la evidencia de esta experiencia.',
+    'El acompañamiento se dio desde la presencia y la escucha. La invitación a comer formaba parte del propósito definido de la experiencia; lo que no estaba previsto era con qué persona se produciría el encuentro. La experiencia partió del reconocimiento de que, para algunas de quienes ofrecen dulces en la calle, las condiciones económicas pueden dificultar incluso el acceso cotidiano a una alimentación adecuada. El siguiente video es la evidencia de esta experiencia.',
   video: {
     src: 'assets/videos/intervencion.mp4',
     titulo: 'La experiencia en video',
@@ -167,8 +167,6 @@ export const APRENDIZAJE: ContenidoAprendizaje = {
 /* ------------------------------------------------------------------ */
 
 export const FOOTER: ContenidoFooter = {
-  titulo: 'Un espacio para compartir',
-  nota: 'Las imágenes y los videos se utilizan con autorización para fines académicos. No se incluye información personal identificatoria de la persona acompañada.',
   firma: [
     { label: 'Responsable', valor: 'Juan Sebastián Ríos Rodríguez' },
     { label: 'Asignatura', valor: '[Asignatura / institución]' },
