@@ -57,7 +57,7 @@ export const HERO: ContenidoHero = {
   imagen: {
     src: 'assets/images/portada.jpg',
     alt: 'Fotografía de la experiencia de acompañamiento y escucha: [Descripción de lo que se ve en la fotografía].',
-    caption: '[Pie de foto breve de la fotografía principal]',
+    caption: '',
     ratio: '1/1',
   },
 };
@@ -103,8 +103,6 @@ export const INTERVENCION: ContenidoIntervencion = {
     'El acompañamiento se dio desde la presencia y la escucha. La invitación a comer formaba parte del propósito definido de la experiencia; lo que no estaba previsto era con qué persona se produciría el encuentro. La experiencia partió del reconocimiento de que, para algunas de quienes ofrecen dulces en la calle, las condiciones económicas pueden dificultar incluso el acceso cotidiano a una alimentación adecuada. El siguiente video es la evidencia de esta experiencia.',
   video: {
     src: 'assets/videos/intervencion.mp4',
-    titulo: 'La experiencia en video',
-    descripcion: '[Descripción breve de lo que muestra el video.]',
   },
 };
 
@@ -169,7 +167,10 @@ export const APRENDIZAJE: ContenidoAprendizaje = {
 export const FOOTER: ContenidoFooter = {
   firma: [
     { label: 'Responsable', valor: 'Juan Sebastián Ríos Rodríguez' },
-    { label: 'Asignatura', valor: '[Asignatura / institución]' },
-    { label: 'Entrega', valor: '[Fecha de entrega]' },
+    {
+      label: 'Asignatura',
+      valor: 'Contexto Amigoniano · Universidad Católica Luis Amigo',
+    },
+    { label: 'Entrega', valor: 'Domingo 4 de octubre de 2026' },
   ],
 };

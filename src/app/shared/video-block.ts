@@ -12,7 +12,10 @@ const RATIOS: Record<MediaRatio, string> = {
 };
 
 /**
- * Video con controles nativos, proporción fija y pie de foto.
+ * Video con controles nativos y proporción fija.
+ *
+ * El pie (título y descripción) es opcional: si el contenido no los trae, el
+ * bloque queda solo con el reproductor, sin dejar espacio vacío.
  *
  * No muestra estados especiales: si el archivo no está, el navegador
  * presenta su propio reproductor vacío. El póster solo se usa cuando se
@@ -35,24 +38,30 @@ const RATIOS: Record<MediaRatio, string> = {
           preload="metadata"
           [attr.poster]="video().poster ?? null"
           [src]="video().src"
-          [attr.aria-label]="video().titulo"
+          [attr.aria-label]="video().titulo ?? null"
         ></video>
       </div>
 
-      <figcaption class="mt-3 flex flex-1 flex-col gap-1">
-        <span
-          class="font-display text-lg"
-          [class]="tono() === 'inverso' ? 'text-paper' : 'text-ink'"
-        >
-          {{ video().titulo }}
-        </span>
-        <span
-          class="text-sm leading-relaxed"
-          [class]="tono() === 'inverso' ? 'text-paper/70' : 'text-ink-mute'"
-        >
-          {{ video().descripcion }}
-        </span>
-      </figcaption>
+      @if (video().titulo || video().descripcion) {
+        <figcaption class="mt-3 flex flex-col gap-1">
+          @if (video().titulo) {
+            <span
+              class="font-display text-lg"
+              [class]="tono() === 'inverso' ? 'text-paper' : 'text-ink'"
+            >
+              {{ video().titulo }}
+            </span>
+          }
+          @if (video().descripcion) {
+            <span
+              class="text-sm leading-relaxed"
+              [class]="tono() === 'inverso' ? 'text-paper/70' : 'text-ink-mute'"
+            >
+              {{ video().descripcion }}
+            </span>
+          }
+        </figcaption>
+      }
     </figure>
   `,
 })

@@ -31,11 +31,15 @@ export interface ImagenBitacora {
   readonly ratio: MediaRatio;
 }
 
-/** Video corto. El póster es opcional: solo se usa si existe el archivo. */
+/**
+ * Video. El título y la descripción son opcionales: si no se escriben, el
+ * bloque muestra solo el reproductor, sin pie. El póster también es opcional
+ * y solo se usa si existe el archivo.
+ */
 export interface VideoBitacora {
   readonly src: string;
-  readonly titulo: string;
-  readonly descripcion: string;
+  readonly titulo?: string;
+  readonly descripcion?: string;
   readonly poster?: string;
   /** Proporción del marco. Por defecto `16/9`; `9/16` para videos verticales. */
   readonly ratio?: MediaRatio;
